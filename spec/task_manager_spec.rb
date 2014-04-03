@@ -49,5 +49,14 @@ describe TaskManager do
     expect(actual).to eq(expected)
   end
 
+  it "finds a task by id" do
+    tasks = TaskManager.new(@db)
+    tasks.add_task({name: "Do One Task"})
+    tasks.add_task({name: "Do Another Task"})
+    actual = tasks.find_task(1)
+    expected = [{:id => 1, :name => "Do One Task", :completed => false}]
+    expect(actual).to eq(expected)
+  end
+
 
 end
