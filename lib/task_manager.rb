@@ -1,16 +1,21 @@
 require 'sequel'
 
 class TaskManager
-  def initialize
+  def initialize(db)
+    @db = db
+    @db.create_table! :tasks do
+      primary_key :id
+      String :name
+    end
 
-    @task_repository = []
+    @tasks = @db[:tasks]
   end
 
   def add_task(task)
-    @task_repository << task
+    @tasks.insert(task)
   end
 
   def show_all
-    @task_repository
+    @tasks.all
   end
 end
