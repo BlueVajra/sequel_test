@@ -27,7 +27,7 @@ describe TaskManager do
   it "completes a task" do
     @tasks.add_task({name: "Do One Task"})
     @tasks.add_task({name: "Do Another Task"})
-    @tasks.update_task({:id => 2, :completed => true})
+    @tasks.update_task(2, {:completed => true})
 
     actual = @tasks.show_all
     expected = [{:id => 1, :name => "Do One Task", :completed => false},
@@ -39,7 +39,7 @@ describe TaskManager do
   it "completes and updates a task" do
     @tasks.add_task({name: "Do One Task"})
     @tasks.add_task({name: "Do Another Task"})
-    @tasks.update_task({:id => 2, :completed => true, name: "Finished Task"})
+    @tasks.update_task(2, {:completed => true, name: "Finished Task"})
 
     actual = @tasks.show_all
     expected = [{:id => 1, :name => "Do One Task", :completed => false},
@@ -51,7 +51,7 @@ describe TaskManager do
   it "deletes a task" do
     @tasks.add_task({name: "Do One Task"})
     @tasks.add_task({name: "Do Another Task"})
-    @tasks.delete_task({id: 1})
+    @tasks.delete_task(1)
     actual = @tasks.show_all
     expected = [{:id => 2, :name => "Do Another Task", :completed => false}]
     expect(actual).to eq(expected)

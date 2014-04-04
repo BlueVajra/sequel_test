@@ -19,11 +19,11 @@ class TaskManager
     @tasks.where(:id => id).to_a.first
   end
 
-  def update_task(task)
-    @tasks.where(:id => task[:id]).update(task)
+  def update_task(id, task)
+    @tasks.where(:id => id).update(task)
   end
 
-  def delete_task(task)
-    @tasks.where(:id => task[:id]).delete
+  def delete_task(id)
+    @tasks.where(:id => id).delete
   end
 end
