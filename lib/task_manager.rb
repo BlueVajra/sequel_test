@@ -2,13 +2,7 @@ require 'sequel'
 
 class TaskManager
   def initialize(db)
-    @db = db
-    @db.create_table! :tasks do
-      primary_key :id
-      Boolean :completed
-      String :name
-    end
-    @tasks = @db[:tasks]
+    @tasks = db
   end
 
   def add_task(task)
