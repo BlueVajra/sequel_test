@@ -16,7 +16,7 @@ class TaskManager
   end
 
   def find_task(id)
-    @tasks.where('id = ' + 1.to_s).to_a
+    @tasks.where('id = ' + id.to_s).to_a.first
   end
 
   def update_task(task)

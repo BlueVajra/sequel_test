@@ -58,7 +58,7 @@ describe TaskManager do
     @tasks.add_task({name: "Do One Task"})
     @tasks.add_task({name: "Do Another Task"})
     actual = @tasks.find_task(1)
-    expected = [{:id => 1, :name => "Do One Task", :completed => false}]
+    expected = {:id => 1, :name => "Do One Task", :completed => false}
     expect(actual).to eq(expected)
   end
 
