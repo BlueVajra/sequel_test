@@ -3,14 +3,17 @@ require 'task_manager'
 describe TaskManager do
   before(:each) do
     @db = Sequel.connect('postgres://gschool_user:password@localhost:5432/sequel_test')
-    @db.create_table! :tasks do
+    @db.create_table :tasks do
       primary_key :id
       Boolean :completed
       String :name
     end
     @tasks_table = @db[:tasks]
     @tasks = TaskManager.new(@tasks_table)
+  end
 
+  after do
+    @db.drop_table :tasks
   end
 
   it "adds multiple tasks and returns an array of all tasks" do

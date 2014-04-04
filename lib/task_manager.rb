@@ -16,14 +16,14 @@ class TaskManager
   end
 
   def find_task(id)
-    @tasks.where('id = ' + id.to_s).to_a.first
+    @tasks.where(:id => id).to_a.first
   end
 
   def update_task(task)
-    @tasks.where('id = ' + task[:id].to_s).update(task)
+    @tasks.where(:id => task[:id]).update(task)
   end
 
   def delete_task(task)
-    @tasks.where('id = ' + task[:id].to_s).delete
+    @tasks.where(:id => task[:id]).delete
   end
 end
